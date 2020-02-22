@@ -76,7 +76,7 @@ class query{
         });
     }
     static viewClass(req ,res){
-        connection.query('SELECT class,class_reaching_point FROM tb_class_reaching WHERE specialty="(?)" AND year = (?);', [req.params.specialty, req.params.year] , (err, rows, fields) => {
+        connection.query('SELECT class,class_reaching_point FROM tb_class_reaching WHERE specialty = (?) AND year = (?);', [req.params.specialty, req.params.year] , (err, rows, fields) => {
             if(rows[0] || !err){
                 console.log('The result is: ', rows);
                 res.send(JSON.stringify(rows));
@@ -88,7 +88,7 @@ class query{
         });
     }
     static viewTarget(req ,res){
-        connection.query('SELECT course,target,course_point FROM tb_couser_target WHERE specialty = "(?)" AND year = (?);', [req.params.specialty, req.params.year],  (err, rows, fields) => {
+        connection.query('SELECT course,target,course_point FROM tb_couser_target WHERE specialty = (?) AND year = (?);', [req.params.specialty, req.params.year],  (err, rows, fields) => {
             if(rows[0] || !err){
                 console.log('The result is: ', rows);
                 res.send(JSON.stringify(rows));
@@ -100,7 +100,7 @@ class query{
         });
     }
     static viewCourse(req ,res){
-        connection.query('SELECT course,course_point FROM tb_couser_target WHERE specialty = "(?)" AND year = (?) AND target = "(?)";', [req.params.specialty, req.params.year, req.params.target],   (err, rows, fields) => {
+        connection.query('SELECT course,course_point FROM tb_couser_target WHERE specialty = (?) AND year = (?) AND target = (?);', [req.params.specialty, req.params.year, req.params.target],   (err, rows, fields) => {
             if(rows[0] || !err){
                 console.log('The result is: ', rows);
                 res.send(JSON.stringify(rows));
@@ -112,7 +112,7 @@ class query{
         });
     }
     static viewYear(req ,res){
-        connection.query('SELECT year,course_point  FROM tb_couser_target WHERE specialty = "(?)" AND course = "(?)" AND target = "(?)";', [req.params.specialty, req.params.course, req.params.target],  (err, rows, fields) => {
+        connection.query('SELECT year,course_point  FROM tb_couser_target WHERE specialty = (?) AND course = (?) AND target = (?);', [req.params.specialty, req.params.course, req.params.target],  (err, rows, fields) => {
             if(rows[0] || !err){
                 console.log('The result is: ', rows);
                 res.send(JSON.stringify(rows));
@@ -124,7 +124,7 @@ class query{
         });
     }
     static viewTop10(req ,res){
-        connection.query('SELECT top10 FROM tb_couser_target WHERE specialty = "(?)" AND course = "(?)" AND target = "(?)" AND year = (?) ;', [req.params.specialty, req.params.course, req.params.target, req.params.year],  (err, rows, fields) => {
+        connection.query('SELECT top10 FROM tb_couser_target WHERE specialty = (?) AND course = (?) AND target = (?) AND year = (?) ;', [req.params.specialty, req.params.course, req.params.target, req.params.year],  (err, rows, fields) => {
             if(rows[0] || !err){
                 console.log('The result is: ', rows);
                 res.send(JSON.stringify(rows));

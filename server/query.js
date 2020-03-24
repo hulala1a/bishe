@@ -22,7 +22,7 @@ class query{
             sql += "year=" + req.params.year.slice(n, n+4) +" OR ";
             n += 4;
         }
-        sql.slice(0,-4);
+        sql = sql.slice(0,-3);
         sql += "GROUP BY sex;";
         console.log(sql);
         connection.query(sql,  (err, rows, fields) => {
@@ -55,7 +55,7 @@ class query{
             sql += "year=" + req.params.year.slice(n, n+4) +" OR ";
             n += 4;
         }
-        sql.slice(0,-4);
+        sql = sql.slice(0,-3);
         sql += "GROUP BY nation;";
         console.log(sql);
         connection.query(sql,  (err, rows, fields) => {
@@ -76,7 +76,7 @@ class query{
             sql += "year=" + req.params.year.slice(n, n+4) +" OR ";
             n += 4;
         }
-        sql.slice(0,-4);
+        sql = sql.slice(0,-3);
         sql += "GROUP BY native_place;";
         console.log(sql);
         connection.query(sql,  (err, rows, fields) => {
@@ -109,7 +109,7 @@ class query{
             sql += "year=" + req.params.year.slice(n, n+4) +" OR ";
             n += 4;
         }
-        sql.slice(0,-4);
+        sql = sql.slice(0,-3);
         sql += ";";
         console.log(sql);
         connection.query(sql,  (err, rows, fields) => {
@@ -130,7 +130,7 @@ class query{
             sql += "year=" + req.params.year.slice(n, n+4) +" OR ";
             n += 4;
         }
-        sql.slice(0,-4);
+        sql = sql.slice(0,-3);
         sql += ";";
         console.log(sql);
         connection.query(sql,  (err, rows, fields) => {

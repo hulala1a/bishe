@@ -91,7 +91,7 @@ class query{
         });
     }
     static viewSpecialty(req ,res){
-        connection.query('SELECT specialty, COUNT(specialty) AS num FROM tb_student GROUP BY specialty;',  (err, rows, fields) => {
+        connection.query('SELECT requirement,target,requirement_point,target_point FROM tb_requirement_target WHERE specialty = (?) AND year = (?);', [req.params.specialty, req.params.year],  (err, rows, fields) => {
             if(rows[0] || !err){
                 console.log('The result is: ', rows);
                 res.send(JSON.stringify(rows));
@@ -192,8 +192,8 @@ class query{
             }
         });
     }
-    static viewTop10(req ,res){
-        connection.query('SELECT top10 FROM tb_couser_target WHERE specialty = (?) AND course = (?) AND target = (?) AND year = (?) ;', [req.params.specialty, req.params.course, req.params.target, req.params.year],  (err, rows, fields) => {
+    static viewStudent(req ,res){
+        connection.query('SELECT student_name,student_point FROM tb_student WHERE class = (?) AND year = (?);', [req.params.class, req.params.year],  (err, rows, fields) => {
             if(rows[0] || !err){
                 console.log('The result is: ', rows);
                 res.send(JSON.stringify(rows));
